@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8b31a7d23e37d4009223365e3f3b15e19707c2a650da247640e67d36ab17dfff"
+            "sha256": "fdd7a61ba9c7b4d90f096285ccc3d8bd28b36c953201c4cad65be4b83958dd3d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -72,6 +72,23 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==3.11"
+        },
+        "inflect": {
+            "hashes": [
+                "sha256:2aea70e5e70c35d8350b8097396ec155ffd68def678c7ff97f51aa69c1d92344",
+                "sha256:faf19801c3742ed5a05a8ce388e0d8fe1a07f8d095c82201eb904f5d27ad571f"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==7.5.0"
+        },
+        "more-itertools": {
+            "hashes": [
+                "sha256:52d4362373dcf7c52546bc4af9a86ee7c4579df9a8dc268be0a2f949d376cc9b",
+                "sha256:f638ddf8a1a0d134181275fb5d58b086ead7c6a72429ad725c67503f13ba30bd"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==10.8.0"
         },
         "pydantic": {
             "hashes": [
@@ -208,6 +225,15 @@
             "markers": "python_version >= '3.9'",
             "version": "==2.41.5"
         },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6",
+                "sha256:b81ee9561e9ca4004139c6cbba3a238c32b03e4894671e181b671e8cb8425d61"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==1.2.1"
+        },
         "sqlalchemy": {
             "hashes": [
                 "sha256:0209d9753671b0da74da2cfbb9ecf9c02f72a759e4b018b3ab35f244c91842c7",
@@ -282,6 +308,14 @@
             ],
             "markers": "python_version >= '3.10'",
             "version": "==0.50.0"
+        },
+        "typeguard": {
+            "hashes": [
+                "sha256:3a7fd2dffb705d4d0efaed4306a704c89b9dee850b688f060a8b1615a79e5f74",
+                "sha256:b5f562281b6bfa1f5492470464730ef001646128b180769880468bd84b68b09e"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==4.4.4"
         },
         "typing-extensions": {
             "hashes": [
