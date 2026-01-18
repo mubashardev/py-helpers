@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 # Import all models to register them with SQLModel metadata
 # This must happen before creating the engine
-# from models import *
+from models import *
 
 load_dotenv()
 
