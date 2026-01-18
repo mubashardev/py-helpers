@@ -1,9 +1,20 @@
 from fastapi import FastAPI
 import uvicorn
 
+from db import init_db, get_session, engine
 from models.user import UserBase
+from contextlib import asynccontextmanager
 
 app = FastAPI()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    try:
+        init_db()
+        yield
+    finally:
+        engine.dispose()
 
 
 @app.get("/")
