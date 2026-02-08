@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Model Helpers | Production-Ready Utilities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 6rem 1rem;
+            background: radial-gradient(circle at top, #1e293b 0%, var(--dark-bg) 70%);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--text-gray);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        main {
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .feature-list strong {
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-list span {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .code-snippet {
+            background-color: #0f172a;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-top: 0.5rem;
+            display: block;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        a.link {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a.link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>SQL Model Helpers</h1>
+            <p class="subtitle">Production-grade utilities giving your FastAPI project superpowers. Featuring
+                <strong>my_sqlmodel</strong> by <a href="https://github.com/mubashardev" class="link"
+                    target="_blank">mubashardev</a>.</p>
+            <div class="btn-group">
+                <a href="/docs" class="btn btn-primary">Explore API Docs</a>
+                <a href="https://github.com/mubashardev/py-helpers" target="_blank" class="btn btn-outline">View on
+                    GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="section-title">
+            <h2>Core Components</h2>
+            <p>Designed for scalability, ease of use, and production environments.</p>
+        </div>
+
+        <div class="grid">
+            <!-- Card 1: my_sqlmodel.py -->
+            <div class="card">
+                <h3><code>my_sqlmodel.py</code></h3>
+                <p style="color: var(--text-gray);">An enhanced base class extending SQLModel with smart automation and
+                    clean data handling.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div>
+                            <strong>Automatic Pluralization</strong>
+                            <span>Converts class names (e.g., `UserLog`) to snake_case plural table names (e.g.,
+                                `user_logs`) automatically using `inflect`.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Smart JSON Serialization</strong>
+                            <span>Custom `to_json()` method that recursively handles nested models, lists, and dicts. No
+                                more serialization errors.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Date & UUID Handling</strong>
+                            <span>Built-in support for `datetime` (to ISO format) and `UUID` conversion, making your API
+                                responses JSON-safe by default.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Pydantic Integration</strong>
+                            <span>Pre-configured `model_config` with arbitrary types allowed and extra fields
+                                ignored.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2: db.py -->
+            <div class="card">
+                <h3><code>db.py</code></h3>
+                <p style="color: var(--text-gray);">A robust database connection manager optimized for both local dev
+                    and serverless deployment.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div>
+                            <strong>Intelligent Pooling</strong>
+                            <span>Detects `neon.tech` URLs to optimize connection pooling (smaller pool, no timeouts) vs
+                                standard PostgreSQL configurations.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Zero-Config Localhost</strong>
+                            <span>Automatically defaults to local credentials when `DB_HOST=localhost`, making setup
+                                instant for new developers.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Robust Initialization</strong>
+                            <span>`init_db()` checks for existing tables before creation, handling race conditions and
+                                ensuring safe startups without errors.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Connection Health</strong>
+                            <span>Enables `pool_pre_ping` to automatically detect and recover from dropped database
+                                connections.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SQL Model Project. Helpers by <a href="https://github.com/mubashardev" class="link"
+                target="_blank">mubashardev</a>.</p>
+    </footer>
+
+</body>
+
+</html>
